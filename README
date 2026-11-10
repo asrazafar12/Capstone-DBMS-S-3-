@@ -1,0 +1,209 @@
+# SupplySync – Smart Supply Chain & Inventory Management System
+
+A SQL-based Wholesale Distribution Management System built using **MySQL 8.0+**, designed to manage inventory, suppliers, purchase orders, warehouses and logistics through relational database management and business-oriented SQL queries.
+
+---
+
+## 1. Project Overview
+
+SupplySync simulates a wholesale distribution company that purchases products from manufacturers and suppliers, stores them across multiple warehouses, and distributes them to schools, universities, corporate offices and small businesses.
+
+The system focuses on improving supply chain efficiency through inventory monitoring, supplier evaluation, stock-out forecasting, order tracking and transportation cost analysis.
+
+It demonstrates how SQL and DBMS concepts can solve practical business problems through structured data management and query optimization.
+
+## 2. Key Features
+
+| Feature | Description |
+|---|---|
+| Smart Inventory Tracking | Monitors stock availability across multiple warehouses. |
+| Low-Stock Alerts | Identifies products below their reorder levels. |
+| Supplier Ranking | Evaluates suppliers based on price, delivery time and quality. |
+| Order Tracking | Tracks purchase orders and shipment statuses. |
+| Stock-Out Prediction | Estimates inventory depletion using historical stock movements. |
+| Delivery Optimization | Compares transportation costs and delivery performance. |
+| Expiry Tracking | Identifies products approaching their expiry dates. |
+| Backup Suppliers | Identifies alternative suppliers for uninterrupted procurement. |
+| Replenishment Tracking | Monitors ordered quantities that have not yet been received. |
+
+## 3. Technology Stack
+
+- **Database:** MySQL 8.0+
+- **Language:** SQL
+- **Storage Engine:** InnoDB
+- **Database Collation:** utf8mb4_0900_ai_ci
+
+## 4. Database Architecture
+
+The database is named `wholesale_db` and contains 13 interconnected tables.
+
+| Table | Purpose |
+|---|---|
+| Suppliers | Stores supplier information and ratings. |
+| Manufacturers | Stores product manufacturer details. |
+| Products | Maintains the product catalogue. |
+| Warehouses | Stores warehouse information and capacities. |
+| Customers | Maintains customer information. |
+| Transport_Methods | Stores available transportation options. |
+| Supplier_Products | Connects suppliers with products and their pricing. |
+| Inventory | Tracks product quantities across warehouses. |
+| Inventory_Batches | Maintains batch-wise expiry information. |
+| Purchase_Orders | Records procurement orders. |
+| Order_Items | Stores individual products within purchase orders. |
+| Logistics | Tracks shipment and delivery information. |
+| Stock_Movements | Records incoming and outgoing inventory. |
+
+**Database relationships include:**
+- One-to-many relationships between suppliers and purchase orders.
+- One-to-many relationships between manufacturers and products.
+- Many-to-many relationships between suppliers and products.
+- One-to-many relationships between warehouses and inventory records.
+- One-to-many relationships between purchase orders and order items.
+- Inventory movements linked to warehouses, products and purchase orders.
+
+## 5. SQL Concepts Implemented
+
+**Database Fundamentals**
+- CREATE DATABASE and CREATE TABLE
+- INSERT, SELECT, UPDATE and DELETE
+- Primary keys and foreign keys
+- NOT NULL, UNIQUE, CHECK and DEFAULT constraints
+- Referential integrity
+
+**Intermediate SQL**
+- INNER JOIN, LEFT JOIN and multi-table joins
+- GROUP BY and HAVING
+- Aggregate functions: SUM(), AVG(), COUNT(), MIN() and MAX()
+- Subqueries and correlated subqueries
+- Conditional expressions using CASE
+
+**Advanced DBMS Concepts**
+- Views for reusable business reports
+- Composite indexing
+- Query execution analysis using EXPLAIN
+- Window functions: ROW_NUMBER(), RANK(), DENSE_RANK(), LEAD() and SUM() OVER()
+- Transaction management using COMMIT, ROLLBACK and SAVEPOINT
+- ACID properties
+
+## 6. Business-Oriented SQL Queries
+
+The project implements eight primary business queries:
+
+1. **Low-Stock Detection:** Identifies products below their reorder levels.
+2. **Best Supplier Identification:** Ranks suppliers using price, delivery time and quality.
+3. **Stock-Out Prediction:** Estimates remaining stock duration and predicted stock-out dates.
+4. **Pending Orders:** Identifies orders awaiting delivery.
+5. **Supplier Performance:** Calculates on-time delivery percentages.
+6. **Warehouse Comparison:** Compares inventory levels across warehouses.
+7. **Replenishment Tracking:** Calculates outstanding quantities from pending orders.
+8. **Transportation Analysis:** Identifies cost-effective transportation methods.
+
+Additional queries demonstrate expiry monitoring, backup supplier identification, joins, subqueries and window functions.
+
+## 7. Database Views
+
+The project includes reusable SQL views for business reporting:
+
+- `v_low_stock` – Products below reorder levels.
+- `v_supplier_scorecard` – Supplier performance evaluation.
+- `v_pending_orders` – Orders awaiting fulfilment.
+- `v_expiry_watch` – Products approaching expiry.
+- `v_stock_out_forecast` – Estimated inventory depletion.
+
+## 8. Installation and Execution
+
+### Prerequisites
+
+- MySQL Server 8.0 or above.
+- MySQL Workbench or VS Code with a MySQL extension.
+
+### Step 1: Clone the Repository
+
+```bash
+git clone <your-repository-url>
+```
+
+### Step 2: Open the SQL File
+
+Open `wholesale_distribution_system.sql` in MySQL Workbench or your preferred SQL editor.
+
+### Step 3: Execute the Script
+
+Run the complete SQL script.
+
+Alternatively, use the terminal:
+
+```bash
+mysql -u root -p < wholesale_distribution_system.sql
+```
+
+### Step 4: Verify the Database
+
+```sql
+USE wholesale_db;
+
+SHOW TABLES;
+```
+
+The script automatically creates the database, tables, relationships, sample data, views, indexes and SQL demonstrations.
+
+**Important:** The script contains `DROP DATABASE IF EXISTS wholesale_db`. Running it again will delete and recreate the existing project database. Back up any changes before re-execution.
+
+## 9. Query Optimization
+
+SupplySync demonstrates query optimization through:
+
+- Composite indexes on frequently filtered and joined columns.
+- Indexes supporting inventory and purchase-order searches.
+- EXPLAIN statements to inspect query execution plans.
+- Comparisons of query plans before and after indexing.
+
+## 10. Sample Data
+
+The project includes interconnected sample records representing a wholesale distribution business.
+
+The dataset covers:
+- Multiple suppliers and manufacturers.
+- Products across different categories.
+- Four warehouses.
+- Inventory and batch records.
+- Purchase orders and order items.
+- Shipment and transportation records.
+- Incoming and outgoing stock movements.
+
+A fixed reporting date of **10 November 2026** is used to make sample query results reproducible. The `fn_today()` function can be modified to use `CURDATE()` for live reporting.
+
+## 11. Project Structure
+
+```text
+SupplySync/
+│
+├── README.md
+│
+└── wholesale_distribution_system.sql
+```
+
+## 12. Future Enhancements
+
+Potential improvements include:
+
+- Developing an interactive inventory dashboard.
+- Integrating real-time supplier and shipment updates.
+- Implementing automated reorder notifications.
+- Adding advanced demand forecasting.
+- Expanding the system to support multiple distribution regions.
+- Developing a full-stack application interface.
+
+## 13. Conclusion
+
+SupplySync demonstrates the practical application of SQL in wholesale distribution and supply chain management. By combining relational database design, inventory monitoring, supplier evaluation, business analytics and query optimization, the project provides a structured approach to managing distribution operations efficiently.
+
+---
+
+**Project:** SupplySync – Smart Supply Chain & Inventory Management System
+
+**Category:** Database Management System (DBMS)
+
+**Database:** MySQL 8.0+
+
+**Language:** SQL
